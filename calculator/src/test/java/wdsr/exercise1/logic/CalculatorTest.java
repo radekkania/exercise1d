@@ -28,7 +28,7 @@ public class CalculatorTest {
 	
 	@Test
 	public void testMin_shouldReturnTheSmallestOfAllValues() {
-		// given
+		// given 
 		int[] values = { 2, -3, 5 };
 		
 		// when
@@ -52,7 +52,7 @@ public class CalculatorTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testMin_shouldRaiseAnExceptionForEmptyArgument() {
-		// given
+		// given 
 		int[] values = {};
 		
 		// when
@@ -63,8 +63,8 @@ public class CalculatorTest {
 	}	
 	
 	@Test
-	public void testMax_shouldReturnTheBigestOfAllValues() {
-		//given
+	public void testMax_shouldReturnTheBigestOfAllValuesGreaterThanZero() {
+		//given all values greater than 0.
 		int [] values = { 1, 2, 3 };
 		
 		//when
@@ -72,6 +72,30 @@ public class CalculatorTest {
 		
 		//then
 		assertThat(max,is(values[2]));
+	}
+	
+	@Test
+	public void testMax_shouldReturnTheBigestOfValuesLessThanZero() {
+		//given all values less than
+		int[] values = { -1, -2, -3};
+		
+		//when
+		int result = calculator.max(values);
+		
+		//then
+		assertThat(result, is(-1));
+	}
+	
+	@Test
+	public void testMax_shouldReturnTheBigestOfAllValues() {
+		//given all values
+		int[] values = { 0, 1, -3 };
+		
+		//when
+		int result = calculator.max(values);
+		
+		//then
+		assertThat(result, is(1));
 	}
 	
 	@Test
@@ -107,5 +131,9 @@ public class CalculatorTest {
 		//then
 		//empty
 	}
+	
+	
+	
+
 
 }
